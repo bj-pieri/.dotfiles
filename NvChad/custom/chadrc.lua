@@ -1,58 +1,32 @@
--- IMPORTANT NOTE : This is default config, so dont change anything here.
--- chadrc overrides this file
-
 local M = {}
 
-local plugin_conf = require "custom.plugins.configs"
+local override = require "custom.plugins.override"
 local userPlugins = require "custom.plugins"
 
-M.options = {
-
-   -- load your options here or load module with options1
-   user = function() 
-     vim.opt.relativenumber = true
-   end,
-
-   nvChad = {
-      -- updater
-      update_url = "https://github.com/NvChad/NvChad",
-      update_branch = "main",
-   },
-}
-
----- UI -----
-
-M.ui = {
-   hl_override = "",
-   colors = "", -- path of your file that contains colors
-   theme = "gruvbox", -- default theme
-   transparency = true,
-}
-
 M.plugins = {
-   override = {},
-   remove = {},
 
    options = {
-      packer = {
-         init_file = "plugins.packerInit",
-         snapshot = nil,
-      },
       lspconfig = {
-         setup_lspconf = "custom.plugins.lspconfig", -- path of lspconfig file
+         setup_lspconf = "custom.plugins.lspconfig",
       },
+
       statusline = {
-         separator_style = "block", -- default/round/slant/block/arrow
+         separator_style = "block",
       },
    },
 
-   -- add, modify, remove plugins
+   override = {
+      ["kyazdani42/nvim-tree.lua"] = override.nvimtree,
+      ["nvim-treesitter/nvim-treesitter"] = override.treesitter,
+      ["nvim-telescope/telescope.nvim"] = override.telescope,
+      ["feline-nvim/feline.nvim"] = override.statusline,
+   },
+
    user = userPlugins,
 }
 
--- non plugin only
-M.mappings = {
-   misc = function() end,
+M.ui = {
+   theme = "gruvchad",
 }
 
 return M

@@ -18,6 +18,10 @@ return {
 
    ["liuchengxu/vista.vim"] = {},
 
+   ["tpope/vim-surround"] = {},
+
+   ["tpope/vim-fugitive"] = {},
+
 
    }
 
