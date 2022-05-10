@@ -50,11 +50,14 @@ local options = {
       qflist_previewer = require("telescope.previewers").vim_buffer_qflist.new,
       -- Developer configurations: Not meant for general override
       buffer_previewer_maker = require("telescope.previewers").buffer_previewer_maker,
+      mappings = {
+         n = { ["q"] = require("telescope.actions").close },
+      },
    },
 }
 
 -- check for any override
-options = require("core.utils").load_override(options, "nvim-telescope/telescope.nvim")
+options = nvchad.load_override(options, "nvim-telescope/telescope.nvim")
 telescope.setup(options)
 
 -- load extensions

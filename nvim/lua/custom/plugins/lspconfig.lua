@@ -17,24 +17,6 @@ M.setup_lsp = function(attach, capabilities)
       }
    end
 
-
-    cmd = { "vscode-html-language-server", "--stdio" }
-    filetypes = { "html" }
-    init_options = {
-      configurationSection = { "html", "css", "javascript" },
-      embeddedLanguages = {
-        css = true,
-        javascript = true
-      },
-      provideFormatter = true
-    }
-    root_dir = function(startpath)
-        return M.search_ancestors(startpath, matcher)
-      end
-    settings = {}
-    single_file_support = true
-
-
 end
 
 return M

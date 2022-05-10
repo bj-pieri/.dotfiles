@@ -1,4 +1,4 @@
-local plugin_settings = require("core.utils").load_config().plugins
+local plugin_settings = nvchad.load_config().plugins
 local present, packer = pcall(require, plugin_settings.options.packer.init_file)
 
 if not present then
@@ -87,16 +87,16 @@ local plugins = {
          require("plugins.configs.others").gitsigns()
       end,
       setup = function()
-         require("core.utils").packer_lazy_load "gitsigns.nvim"
+         nvchad.packer_lazy_load "gitsigns.nvim"
       end,
    },
 
    -- lsp stuff
 
-  ["williamboman/nvim-lsp-installer"] = {
+   ["williamboman/nvim-lsp-installer"] = {
       opt = true,
       setup = function()
-         require("core.utils").packer_lazy_load "nvim-lsp-installer"
+         nvchad.packer_lazy_load "nvim-lsp-installer"
          -- reload the current file so lsp actually starts for it
          vim.defer_fn(function()
             vim.cmd 'if &ft == "packer" | echo "" | else | silent! e %'
@@ -123,7 +123,7 @@ local plugins = {
    ["andymass/vim-matchup"] = {
       opt = true,
       setup = function()
-         require("core.utils").packer_lazy_load "vim-matchup"
+         nvchad.packer_lazy_load "vim-matchup"
       end,
    },
 
@@ -228,34 +228,34 @@ local plugins = {
       end,
    },
 
-   ["windwp/nvim-ts-autotag"] = {
-      ft = { "html", "javascriptreact" },
-      after = "nvim-treesitter",
-      config = function()
-         require("nvim-ts-autotag").setup()
-      end,
-   },
+    ["windwp/nvim-ts-autotag"] = {
+          ft = { "html", "javascriptreact" },
+          after = "nvim-treesitter",
+          config = function()
+             require("nvim-ts-autotag").setup()
+          end,
+       },
 
-   ["jose-elias-alvarez/null-ls.nvim"] = {
-      after = "nvim-lspconfig",
-      config = function()
-         require("plugins.configs.null-ls").setup()
-      end,
-   },
+     ["jose-elias-alvarez/null-ls.nvim"] = {
+        after = "nvim-lspconfig",
+        config = function()
+           require("plugins.configs.null-ls").setup()
+        end,
+     },
 
-   ["fedepujol/move.nvim"] = {},
+     ["fedepujol/move.nvim"] = {},
 
-   ["liuchengxu/vista.vim"] = {},
+     ["liuchengxu/vista.vim"] = {},
 
-   ["tpope/vim-surround"] = {},
+     ["tpope/vim-surround"] = {},
 
-   ["tpope/vim-fugitive"] = {},
+     ["tpope/vim-fugitive"] = {},
 
 }
 
-plugins = require("core.utils").remove_default_plugins(plugins)
+plugins = nvchad.remove_default_plugins(plugins)
 -- merge user plugin table & default plugin table
-plugins = require("core.utils").plugin_list(plugins)
+plugins = nvchad.plugin_list(plugins)
 
 return packer.startup(function(use)
    for _, v in pairs(plugins) do

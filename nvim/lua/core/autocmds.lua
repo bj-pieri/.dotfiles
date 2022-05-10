@@ -1,5 +1,20 @@
 local autocmd = vim.api.nvim_create_autocmd
 
+-- Disable statusline in dashboard
+autocmd("FileType", {
+   pattern = "alpha",
+   callback = function()
+      vim.opt.laststatus = 0
+   end,
+})
+
+autocmd("BufUnload", {
+   buffer = 0,
+   callback = function()
+      vim.opt.laststatus = 3
+   end,
+})
+
 -- Uncomment this if you want to open nvim with a dir
 -- autocmd("BufEnter", {
 --    callback = function()
@@ -39,5 +54,20 @@ local autocmd = vim.api.nvim_create_autocmd
 --       vim.opt_local.tabstop = 4
 --       vim.opt_local.shiftwidth = 4
 --       vim.opt_local.softtabstop = 4
+--    end,
+-- })
+
+-- Highlight yanked text
+-- autocmd("TextYankPost", {
+--    callback = function()
+--       vim.highlight.on_yank { higroup = "Visual", timeout = 200 }
+--    end,
+-- })
+
+-- Enable spellchecking in markdown, text and gitcommit files
+-- autocmd("FileType", {
+--    pattern = { "gitcommit", "markdown", "text" },
+--    callback = function()
+--       vim.opt_local.spell = true
 --    end,
 -- })

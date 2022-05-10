@@ -5,8 +5,6 @@ local g = vim.g
 g.did_load_filetypes = 0
 g.do_filetype_lua = 1
 
-
-
 -- gui configs (NEOVIDE)
 g.neovide_cursor_vfx_mode = "railgun"
 g.neovide_cursor_antialiasing = true
@@ -89,4 +87,4 @@ vim.schedule(function()
 end)
 
 -- load user options if the file exists
-require("core.utils").load_config().options.user()
+nvchad.load_config().options.user()

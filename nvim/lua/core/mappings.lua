@@ -1,12 +1,6 @@
-local utils = require "core.utils"
-
-local map = utils.map
+local map = nvchad.map
 local cmd = vim.cmd
 local user_cmd = vim.api.nvim_create_user_command
-
--- This is a wrapper function made to disable a plugin mapping from customrc
--- If keys are nil, false or empty string, then the mapping will be not applied
--- Useful when one wants to use that keymap for any other purpose
 
 -- Don't copy the replaced text after pasting in visual mode
 map("v", "p", "p:let @+=@0<CR>")
@@ -43,7 +37,7 @@ map("n", "<C-k>", "<C-w>k")
 map("n", "<C-j>", "<C-w>j")
 
 map("n", "<leader>x", function()
-   require("core.utils").close_buffer()
+   nvchad.close_buffer()
 end)
 
 map("n", "<C-c>", "<cmd> :%y+ <CR>") -- copy whole file content
@@ -52,6 +46,22 @@ map("n", "<C-t>b", "<cmd> :tabnew <CR>") -- new tabs
 map("n", "<leader>n", "<cmd> :set nu! <CR>")
 map("n", "<leader>rn", "<cmd> :set rnu! <CR>") -- relative line numbers
 map("n", "<C-s>", "<cmd> :w <CR>") -- ctrl + s to save file
+
+-- vista
+map("n", "<leader>vv", ":Vista!! <CR>") -- toggle sidebar vista with ctags
+map("n", "<leader>vf", ":Vista finder <CR>") -- toggle vista ctags searcher
+map("n", "<leader>vr", ":Vista finder! <CR>") -- toggle recursively vista ctagas searcher
+
+
+-- vista move
+vim.api.nvim_set_keymap('n', '<A-j>', ":MoveLine(1)<CR>", { noremap = true, silent = true })
+vim.api.nvim_set_keymap('n', '<A-k>', ":MoveLine(-1)<CR>", { noremap = true, silent = true })
+vim.api.nvim_set_keymap('v', '<A-j>', ":MoveBlock(1)<CR>", { noremap = true, silent = true })
+vim.api.nvim_set_keymap('v', '<A-k>', ":MoveBlock(-1)<CR>", { noremap = true, silent = true })
+vim.api.nvim_set_keymap('n', '<A-l>', ":MoveHChar(1)<CR>", { noremap = true, silent = true })
+vim.api.nvim_set_keymap('n', '<A-h>', ":MoveHChar(-1)<CR>", { noremap = true, silent = true })
+vim.api.nvim_set_keymap('v', '<A-l>', ":MoveHBlock(1)<CR>", { noremap = true, silent = true })
+vim.api.nvim_set_keymap('v', '<A-h>', ":MoveHBlock(-1)<CR>", { noremap = true, silent = true })
 
 -- terminal mappings
 
@@ -90,8 +100,12 @@ user_cmd("PackerStatus", packer_cmd "status", {})
 user_cmd("PackerSync", packer_cmd "sync", {})
 user_cmd("PackerUpdate", packer_cmd "update", {})
 
+-- add NvChadUpdate command and mapping
+cmd "silent! command! NvChadUpdate lua require('nvchad').update_nvchad()"
+map("n", "<leader>uu", "<cmd> :NvChadUpdate <CR>")
+
 -- load overriden misc mappings
-require("core.utils").load_config().mappings.misc()
+nvchad.load_config().mappings.misc()
 
 local M = {}
 
@@ -193,29 +207,10 @@ M.telescope = function()
    map("n", "<leader>fw", "<cmd> :Telescope live_grep <CR>")
    map("n", "<leader>fo", "<cmd> :Telescope oldfiles <CR>")
    map("n", "<leader>th", "<cmd> :Telescope themes <CR>")
+   map("n", "<leader>tk", "<cmd> :Telescope keymaps <CR>")
 
    -- pick a hidden term
    map("n", "<leader>W", "<cmd> :Telescope terms <CR>")
 end
-
--- telescope
-map("n", "<leader>fp", ":Telescope media_files <CR>")
-map("n", "<leader>te", ":Telescope <CR>")
-
--- vista
-map("n", "<leader>vv", ":Vista!! <CR>") -- toggle sidebar vista with ctags
-map("n", "<leader>vf", ":Vista finder <CR>") -- toggle vista ctags searcher
-map("n", "<leader>vr", ":Vista finder! <CR>") -- toggle recursively vista ctagas searcher
-
-
--- vista move
-vim.api.nvim_set_keymap('n', '<A-j>', ":MoveLine(1)<CR>", { noremap = true, silent = true })
-vim.api.nvim_set_keymap('n', '<A-k>', ":MoveLine(-1)<CR>", { noremap = true, silent = true })
-vim.api.nvim_set_keymap('v', '<A-j>', ":MoveBlock(1)<CR>", { noremap = true, silent = true })
-vim.api.nvim_set_keymap('v', '<A-k>', ":MoveBlock(-1)<CR>", { noremap = true, silent = true })
-vim.api.nvim_set_keymap('n', '<A-l>', ":MoveHChar(1)<CR>", { noremap = true, silent = true })
-vim.api.nvim_set_keymap('n', '<A-h>', ":MoveHChar(-1)<CR>", { noremap = true, silent = true })
-vim.api.nvim_set_keymap('v', '<A-l>', ":MoveHBlock(1)<CR>", { noremap = true, silent = true })
-vim.api.nvim_set_keymap('v', '<A-h>', ":MoveHBlock(-1)<CR>", { noremap = true, silent = true })
 
 return M
