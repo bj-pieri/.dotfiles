@@ -36,11 +36,9 @@ M.telescope = {
 }
 
 M.feline = {
-icon_styles = {
-   block = {
-      main_icon = "   ",
-   },
-},
-}
+      main_icon = {
+        provider = "   "
+      },
+   }
 
 return M
