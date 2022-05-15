@@ -35,13 +35,12 @@ M.telescope = {
    },
 }
 
-M.statusline = {
+M.feline = {
 icon_styles = {
    block = {
       main_icon = "   ",
    },
+},
 }
-}
-
 
 return M
