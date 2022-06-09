@@ -22,4 +22,7 @@ vim.api.nvim_set_keymap('v', '<A-h>', ":MoveHBlock(-1)<CR>", { noremap = true, s
 vim.api.nvim_set_keymap("v", "<", "<gv", { noremap = true, silent = true})
 vim.api.nvim_set_keymap("v", ">", ">gv", { noremap = true, silent = true})
 
+-- use ESC to turn off search highlighting
+vim.api.nvim_set_keymap("n", "<Esc>", "<cmd> :noh <CR>", {noremap = true, silent = true})
+
 return M

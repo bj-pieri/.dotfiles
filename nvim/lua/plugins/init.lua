@@ -1,5 +1,4 @@
-local plugin_settings = nvchad.load_config().plugins
-local present, packer = pcall(require, plugin_settings.options.packer.init_file)
+local present, packer = pcall(require, "plugins.packerInit")
 
 if not present then
    return false
@@ -13,27 +12,7 @@ local plugins = {
       event = "VimEnter",
    },
 
-   ["NvChad/extensions"] = {},
-
-   ["NvChad/base46"] = {
-      after = "packer.nvim",
-      config = function()
-         local ok, base46 = pcall(require, "base46")
-
-         if ok then
-            base46.load_theme()
-         end
-      end,
-   },
-
-   ["NvChad/nvterm"] = {
-      config = function()
-         require "plugins.configs.nvterm"
-      end,
-   },
-
    ["kyazdani42/nvim-web-devicons"] = {
-      after = "base46",
       config = function()
          require "plugins.configs.icons"
       end,
@@ -48,11 +27,6 @@ local plugins = {
 
    ["akinsho/bufferline.nvim"] = {
       after = "nvim-web-devicons",
-
-      setup = function()
-         require("core.mappings").bufferline()
-      end,
-
       config = function()
          require "plugins.configs.bufferline"
       end,
@@ -62,13 +36,6 @@ local plugins = {
       event = "BufRead",
       config = function()
          require("plugins.configs.others").blankline()
-      end,
-   },
-
-   ["NvChad/nvim-colorizer.lua"] = {
-      event = "BufRead",
-      config = function()
-         require("plugins.configs.others").colorizer()
       end,
    },
 
@@ -87,7 +54,7 @@ local plugins = {
          require("plugins.configs.others").gitsigns()
       end,
       setup = function()
-         nvchad.packer_lazy_load "gitsigns.nvim"
+         utils.packer_lazy_load "gitsigns.nvim"
       end,
    },
 
@@ -96,7 +63,7 @@ local plugins = {
    ["williamboman/nvim-lsp-installer"] = {
       opt = true,
       setup = function()
-         nvchad.packer_lazy_load "nvim-lsp-installer"
+         utils.packer_lazy_load "nvim-lsp-installer"
          -- reload the current file so lsp actually starts for it
          vim.defer_fn(function()
             vim.cmd 'if &ft == "packer" | echo "" | else | silent! e %'
@@ -123,7 +90,7 @@ local plugins = {
    ["andymass/vim-matchup"] = {
       opt = true,
       setup = function()
-         nvchad.packer_lazy_load "vim-matchup"
+         utils.packer_lazy_load "vim-matchup"
       end,
    },
 
@@ -184,21 +151,9 @@ local plugins = {
       end,
    },
 
-   ["goolord/alpha-nvim"] = {
-      disable = true,
-      config = function()
-         require "plugins.configs.alpha"
-      end,
-   },
-
    ["numToStr/Comment.nvim"] = {
       module = "Comment",
       keys = { "gc", "gb" },
-
-      setup = function()
-         require("core.mappings").comment()
-      end,
-
       config = function()
          require("plugins.configs.others").comment()
       end,
@@ -207,10 +162,6 @@ local plugins = {
    -- file managing , picker etc
    ["kyazdani42/nvim-tree.lua"] = {
       cmd = { "NvimTreeToggle", "NvimTreeFocus" },
-      setup = function()
-         require("core.mappings").nvimtree()
-      end,
-
       config = function()
          require "plugins.configs.nvimtree"
       end,
@@ -218,11 +169,6 @@ local plugins = {
 
    ["nvim-telescope/telescope.nvim"] = {
       cmd = "Telescope",
-
-      setup = function()
-         require("core.mappings").telescope()
-      end,
-
       config = function()
          require "plugins.configs.telescope"
       end,
@@ -251,11 +197,15 @@ local plugins = {
 
      ["tpope/vim-fugitive"] = {},
 
+     ["ellisonleao/gruvbox.nvim"] = {},
+
+
 }
 
-plugins = nvchad.remove_default_plugins(plugins)
+plugins = utils.remove_default_plugins(plugins)
+
 -- merge user plugin table & default plugin table
-plugins = nvchad.plugin_list(plugins)
+plugins = utils.plugin_list(plugins)
 
 return packer.startup(function(use)
    for _, v in pairs(plugins) do

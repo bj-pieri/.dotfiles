@@ -35,10 +35,4 @@ M.telescope = {
    },
 }
 
-M.feline = {
-      main_icon = {
-        provider = "   "
-      },
-   }
-
 return M

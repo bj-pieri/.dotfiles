@@ -42,7 +42,7 @@ lspconfig.sumneko_lua.setup {
    settings = {
       Lua = {
          diagnostics = {
-            globals = { "vim", "nvchad" },
+            globals = { "vim" },
          },
          workspace = {
             library = {
@@ -56,11 +56,19 @@ lspconfig.sumneko_lua.setup {
    },
 }
 
--- requires a file containing user's lspconfigs
-local addlsp_confs = nvchad.load_config().plugins.options.lspconfig.setup_lspconf
 
-if #addlsp_confs ~= 0 then
-   require(addlsp_confs).setup_lsp(M.on_attach, capabilities)
-end
+   -- lspservers with default config
+
+   local servers = { "html", "cssls", "clangd", "pyright", "gopls", "solargraph", "tsserver", "rust_analyzer", "bashls"}
+
+   for _, lsp in ipairs(servers) do
+      lspconfig[lsp].setup {
+         on_attach = M.on_attach,
+         capabilities = capabilities,
+         flags = {
+            debounce_text_changes = 150,
+         },
+      }
+   end
 
 return M

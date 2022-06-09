@@ -1,6 +1,7 @@
 local opt = vim.opt
 local g = vim.g
 
+
 -- use filetype.lua instead of filetype.vim
 g.did_load_filetypes = 0
 g.do_filetype_lua = 1
@@ -86,5 +87,3 @@ vim.schedule(function()
    vim.cmd [[ silent! rsh ]]
 end)
 
--- load user options if the file exists
-nvchad.load_config().options.user()

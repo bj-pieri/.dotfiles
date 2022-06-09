@@ -4,9 +4,41 @@ if not present then
    return
 end
 
-local options = {
-   colors = require("base46").get_colors "base_30",
-   -- colors = require("gruvbox").base_30,
+local gruvbox = {
+   white = "#ebdbb2",
+   darker_black = "#232323",
+   black = "#282828", --  nvim bg
+   black2 = "#2e2e2e",
+   one_bg = "#353535",
+   one_bg2 = "#3f3f3f",
+   one_bg3 = "#444444",
+   grey = "#464646",
+   grey_fg = "#4e4e4e",
+   grey_fg2 = "#505050",
+   light_grey = "#565656",
+   red = "#fb4934",
+   baby_pink = "#cc241d",
+   pink = "#ff75a0",
+   line = "#2c2f30", -- for lines like vertsplit
+   green = "#b8bb26",
+   vibrant_green = "#a9b665",
+   nord_blue = "#83a598",
+   blue = "#458588",
+   yellow = "#d79921",
+   sun = "#fabd2f",
+   purple = "#b4bbc8",
+   dark_purple = "#d3869b",
+   teal = "#749689",
+   orange = "#e78a4e",
+   cyan = "#82b3a8",
+   statusline_bg = "#2c2c2c",
+   lightbg = "#353535",
+   lightbg2 = "#303030",
+   pmenu_bg = "#83a598",
+   folder_bg = "#83a598",
+ }
+
+ local options = {
    lsp = require "feline.providers.lsp",
    lsp_severity = vim.diagnostic.severity,
 }
@@ -52,21 +84,21 @@ options.icon_styles = {
    },
 }
 
-options.separator_style = options.icon_styles[nvchad.load_config().plugins.options.statusline.separator_style]
+options.separator_style = options.icon_styles.block
 
 options.main_icon = {
    provider = options.separator_style.main_icon,
 
    hl = {
-      fg = options.colors.statusline_bg,
-      bg = options.colors.nord_blue,
+      fg = gruvbox.statusline_bg,
+      bg = gruvbox.nord_blue,
    },
 
    right_sep = {
       str = options.separator_style.right,
       hl = {
-         fg = options.colors.nord_blue,
-         bg = options.colors.lightbg,
+         fg = gruvbox.nord_blue,
+         bg = gruvbox.lightbg,
       },
    },
 }
@@ -83,13 +115,13 @@ options.file_name = {
       return " " .. icon .. " " .. filename .. " "
    end,
    hl = {
-      fg = options.colors.white,
-      bg = options.colors.lightbg,
+      fg = gruvbox.white,
+      bg = gruvbox.lightbg,
    },
 
    right_sep = {
       str = options.separator_style.right,
-      hl = { fg = options.colors.lightbg, bg = options.colors.lightbg2 },
+      hl = { fg = gruvbox.lightbg, bg = gruvbox.lightbg2 },
    },
 }
 
@@ -100,14 +132,14 @@ options.dir_name = {
    end,
 
    hl = {
-      fg = options.colors.grey_fg2,
-      bg = options.colors.lightbg2,
+      fg = gruvbox.grey_fg2,
+      bg = gruvbox.lightbg2,
    },
    right_sep = {
       str = options.separator_style.right,
       hi = {
-         fg = options.colors.lightbg2,
-         bg = options.colors.statusline_bg,
+         fg = gruvbox.lightbg2,
+         bg = gruvbox.statusline_bg,
       },
    },
 }
@@ -116,8 +148,8 @@ options.diff = {
    add = {
       provider = "git_diff_added",
       hl = {
-         fg = options.colors.grey_fg2,
-         bg = options.colors.statusline_bg,
+         fg = gruvbox.grey_fg2,
+         bg = gruvbox.statusline_bg,
       },
       icon = " ",
    },
@@ -125,8 +157,8 @@ options.diff = {
    change = {
       provider = "git_diff_changed",
       hl = {
-         fg = options.colors.grey_fg2,
-         bg = options.colors.statusline_bg,
+         fg = gruvbox.grey_fg2,
+         bg = gruvbox.statusline_bg,
       },
       icon = "  ",
    },
@@ -134,8 +166,8 @@ options.diff = {
    remove = {
       provider = "git_diff_removed",
       hl = {
-         fg = options.colors.grey_fg2,
-         bg = options.colors.statusline_bg,
+         fg = gruvbox.grey_fg2,
+         bg = gruvbox.statusline_bg,
       },
       icon = "  ",
    },
@@ -144,8 +176,8 @@ options.diff = {
 options.git_branch = {
    provider = "git_branch",
    hl = {
-      fg = options.colors.grey_fg2,
-      bg = options.colors.statusline_bg,
+      fg = gruvbox.grey_fg2,
+      bg = gruvbox.statusline_bg,
    },
    icon = "  ",
 }
@@ -157,7 +189,7 @@ options.diagnostic = {
          return options.lsp.diagnostics_exist(options.lsp_severity.ERROR)
       end,
 
-      hl = { fg = options.colors.red },
+      hl = { fg = gruvbox.red },
       icon = "  ",
    },
 
@@ -166,7 +198,7 @@ options.diagnostic = {
       enabled = function()
          return options.lsp.diagnostics_exist(options.lsp_severity.WARN)
       end,
-      hl = { fg = options.colors.yellow },
+      hl = { fg = gruvbox.yellow },
       icon = "  ",
    },
 
@@ -175,7 +207,7 @@ options.diagnostic = {
       enabled = function()
          return options.lsp.diagnostics_exist(options.lsp_severity.HINT)
       end,
-      hl = { fg = options.colors.grey_fg2 },
+      hl = { fg = gruvbox.grey_fg2 },
       icon = "  ",
    },
 
@@ -184,7 +216,7 @@ options.diagnostic = {
       enabled = function()
          return options.lsp.diagnostics_exist(options.lsp_severity.INFO)
       end,
-      hl = { fg = options.colors.green },
+      hl = { fg = gruvbox.green },
       icon = "  ",
    },
 }
@@ -221,7 +253,7 @@ options.lsp_progress = {
 
       return ""
    end,
-   hl = { fg = options.colors.green },
+   hl = { fg = gruvbox.green },
 }
 
 options.lsp_icon = {
@@ -232,44 +264,44 @@ options.lsp_icon = {
          return ""
       end
    end,
-   hl = { fg = options.colors.grey_fg2, bg = options.colors.statusline_bg },
+   hl = { fg = gruvbox.grey_fg2, bg = gruvbox.statusline_bg },
 }
 
 options.mode_colors = {
-   ["n"] = { "NORMAL", options.colors.red },
-   ["no"] = { "N-PENDING", options.colors.red },
-   ["i"] = { "INSERT", options.colors.dark_purple },
-   ["ic"] = { "INSERT", options.colors.dark_purple },
-   ["t"] = { "TERMINAL", options.colors.green },
-   ["v"] = { "VISUAL", options.colors.cyan },
-   ["V"] = { "V-LINE", options.colors.cyan },
-   [""] = { "V-BLOCK", options.colors.cyan },
-   ["R"] = { "REPLACE", options.colors.orange },
-   ["Rv"] = { "V-REPLACE", options.colors.orange },
-   ["s"] = { "SELECT", options.colors.nord_blue },
-   ["S"] = { "S-LINE", options.colors.nord_blue },
-   [""] = { "S-BLOCK", options.colors.nord_blue },
-   ["c"] = { "COMMAND", options.colors.pink },
-   ["cv"] = { "COMMAND", options.colors.pink },
-   ["ce"] = { "COMMAND", options.colors.pink },
-   ["r"] = { "PROMPT", options.colors.teal },
-   ["rm"] = { "MORE", options.colors.teal },
-   ["r?"] = { "CONFIRM", options.colors.teal },
-   ["!"] = { "SHELL", options.colors.green },
+   ["n"] = { "NORMAL", gruvbox.red },
+   ["no"] = { "N-PENDING", gruvbox.red },
+   ["i"] = { "INSERT", gruvbox.dark_purple },
+   ["ic"] = { "INSERT", gruvbox.dark_purple },
+   ["t"] = { "TERMINAL", gruvbox.green },
+   ["v"] = { "VISUAL", gruvbox.cyan },
+   ["V"] = { "V-LINE", gruvbox.cyan },
+   [""] = { "V-BLOCK", gruvbox.cyan },
+   ["R"] = { "REPLACE", gruvbox.orange },
+   ["Rv"] = { "V-REPLACE", gruvbox.orange },
+   ["s"] = { "SELECT", gruvbox.nord_blue },
+   ["S"] = { "S-LINE", gruvbox.nord_blue },
+   [""] = { "S-BLOCK", gruvbox.nord_blue },
+   ["c"] = { "COMMAND", gruvbox.pink },
+   ["cv"] = { "COMMAND", gruvbox.pink },
+   ["ce"] = { "COMMAND", gruvbox.pink },
+   ["r"] = { "PROMPT", gruvbox.teal },
+   ["rm"] = { "MORE", gruvbox.teal },
+   ["r?"] = { "CONFIRM", gruvbox.teal },
+   ["!"] = { "SHELL", gruvbox.green },
 }
 
 options.chad_mode_hl = function()
    return {
       fg = options.mode_colors[vim.fn.mode()][2],
-      bg = options.colors.one_bg,
+      bg = gruvbox.one_bg,
    }
 end
 
 options.empty_space = {
    provider = " " .. options.separator_style.left,
    hl = {
-      fg = options.colors.one_bg2,
-      bg = options.colors.statusline_bg,
+      fg = gruvbox.one_bg2,
+      bg = gruvbox.statusline_bg,
    },
 }
 
@@ -279,7 +311,7 @@ options.empty_spaceColored = {
    hl = function()
       return {
          fg = options.mode_colors[vim.fn.mode()][2],
-         bg = options.colors.one_bg2,
+         bg = gruvbox.one_bg2,
       }
    end,
 }
@@ -288,7 +320,7 @@ options.mode_icon = {
    provider = options.separator_style.vi_mode_icon,
    hl = function()
       return {
-         fg = options.colors.statusline_bg,
+         fg = gruvbox.statusline_bg,
          bg = options.mode_colors[vim.fn.mode()][2],
       }
    end,
@@ -304,24 +336,24 @@ options.empty_space2 = {
 options.separator_right = {
    provider = options.separator_style.left,
    hl = {
-      fg = options.colors.grey,
-      bg = options.colors.one_bg,
+      fg = gruvbox.grey,
+      bg = gruvbox.one_bg,
    },
 }
 
 options.separator_right2 = {
    provider = options.separator_style.left,
    hl = {
-      fg = options.colors.green,
-      bg = options.colors.grey,
+      fg = gruvbox.green,
+      bg = gruvbox.grey,
    },
 }
 
 options.position_icon = {
    provider = options.separator_style.position_icon,
    hl = {
-      fg = options.colors.black,
-      bg = options.colors.green,
+      fg = gruvbox.black,
+      bg = gruvbox.green,
    },
 }
 
@@ -340,12 +372,10 @@ options.current_line = {
    end,
 
    hl = {
-      fg = options.colors.green,
-      bg = options.colors.one_bg,
+      fg = gruvbox.green,
+      bg = gruvbox.one_bg,
    },
 }
-
-options = nvchad.load_override(options, "feline-nvim/feline.nvim")
 
 local function add_table(tbl, inject)
    if inject then
@@ -392,8 +422,8 @@ options.components.active[2] = options.middle
 options.components.active[3] = options.right
 
 options.theme = {
-   bg = options.colors.statusline_bg,
-   fg = options.colors.fg,
+   bg = gruvbox.statusline_bg,
+   fg = gruvbox.fg,
 }
 
 feline.setup {

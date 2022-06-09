@@ -1,7 +1,6 @@
 local M = {}
 
-local override = require "custom.plugins.override"
-local userPlugins = require "custom.plugins"
+local override = require "custom.override"
 
 M.options = {
   user = function ()
@@ -28,14 +27,20 @@ M.plugins = {
       ["kyazdani42/nvim-tree.lua"] = override.nvimtree,
       ["nvim-treesitter/nvim-treesitter"] = override.treesitter,
       ["nvim-telescope/telescope.nvim"] = override.telescope,
-      ["feline-nvim/feline.nvim"] = override.feline,
    },
 
-   user = userPlugins,
+   user = require "custom.plugins",
+
+   remove = {
+      "folke/which-key.nvim",
+   },
+
 }
 
 M.ui = {
    theme = "gruvbox",
+   transparency = false,
+   theme_toggle = { "gruvbox", "gruvbox_light" },
 }
 
 M.mappings = require "custom.mappings"

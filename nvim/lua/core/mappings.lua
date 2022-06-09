@@ -1,6 +1,24 @@
-local map = nvchad.map
-local cmd = vim.cmd
+local map = utils.map
 local user_cmd = vim.api.nvim_create_user_command
+
+-- Stay in indent mode
+map("v", "<", "<gv")
+map("v", ">", ">gv")
+
+-- vista
+map("n", "<leader>vv", ":Vista!! <CR>") -- toggle sidebar vista with ctags
+map("n", "<leader>vf", ":Vista finder <CR>") -- toggle vista ctags searcher
+map("n", "<leader>vr", ":Vista finder! <CR>") -- toggle recursively vista ctagas searcher
+
+-- vim move
+vim.api.nvim_set_keymap('n', '<A-j>', ":MoveLine(1)<CR>", { noremap = true, silent = true })
+vim.api.nvim_set_keymap('n', '<A-k>', ":MoveLine(-1)<CR>", { noremap = true, silent = true })
+vim.api.nvim_set_keymap('v', '<A-j>', ":MoveBlock(1)<CR>", { noremap = true, silent = true })
+vim.api.nvim_set_keymap('v', '<A-k>', ":MoveBlock(-1)<CR>", { noremap = true, silent = true })
+vim.api.nvim_set_keymap('n', '<A-l>', ":MoveHChar(1)<CR>", { noremap = true, silent = true })
+vim.api.nvim_set_keymap('n', '<A-h>', ":MoveHChar(-1)<CR>", { noremap = true, silent = true })
+vim.api.nvim_set_keymap('v', '<A-l>', ":MoveHBlock(1)<CR>", { noremap = true, silent = true })
+vim.api.nvim_set_keymap('v', '<A-h>', ":MoveHBlock(-1)<CR>", { noremap = true, silent = true })
 
 -- Don't copy the replaced text after pasting in visual mode
 map("v", "p", "p:let @+=@0<CR>")
@@ -18,10 +36,6 @@ map("", "<Up>", 'v:count || mode(1)[0:1] == "no" ? "k" : "gk"', { expr = true })
 -- use ESC to turn off search highlighting
 map("n", "<Esc>", "<cmd> :noh <CR>")
 
--- Stay in indent mode
-map("v", "<", "<gv")
-map("v", ">", ">gv")
-
 -- move cursor within insert mode
 map("i", "<C-h>", "<Left>")
 map("i", "<C-e>", "<End>")
@@ -37,7 +51,7 @@ map("n", "<C-k>", "<C-w>k")
 map("n", "<C-j>", "<C-w>j")
 
 map("n", "<leader>x", function()
-   nvchad.close_buffer()
+   utils.close_buffer()
 end)
 
 map("n", "<C-c>", "<cmd> :%y+ <CR>") -- copy whole file content
@@ -47,26 +61,7 @@ map("n", "<leader>n", "<cmd> :set nu! <CR>")
 map("n", "<leader>rn", "<cmd> :set rnu! <CR>") -- relative line numbers
 map("n", "<C-s>", "<cmd> :w <CR>") -- ctrl + s to save file
 
--- vista
-map("n", "<leader>vv", ":Vista!! <CR>") -- toggle sidebar vista with ctags
-map("n", "<leader>vf", ":Vista finder <CR>") -- toggle vista ctags searcher
-map("n", "<leader>vr", ":Vista finder! <CR>") -- toggle recursively vista ctagas searcher
-
-
--- vista move
-vim.api.nvim_set_keymap('n', '<A-j>', ":MoveLine(1)<CR>", { noremap = true, silent = true })
-vim.api.nvim_set_keymap('n', '<A-k>', ":MoveLine(-1)<CR>", { noremap = true, silent = true })
-vim.api.nvim_set_keymap('v', '<A-j>', ":MoveBlock(1)<CR>", { noremap = true, silent = true })
-vim.api.nvim_set_keymap('v', '<A-k>', ":MoveBlock(-1)<CR>", { noremap = true, silent = true })
-vim.api.nvim_set_keymap('n', '<A-l>', ":MoveHChar(1)<CR>", { noremap = true, silent = true })
-vim.api.nvim_set_keymap('n', '<A-h>', ":MoveHChar(-1)<CR>", { noremap = true, silent = true })
-vim.api.nvim_set_keymap('v', '<A-l>', ":MoveHBlock(1)<CR>", { noremap = true, silent = true })
-vim.api.nvim_set_keymap('v', '<A-h>', ":MoveHBlock(-1)<CR>", { noremap = true, silent = true })
-
 -- terminal mappings
-
--- get out of terminal mode
-map("t", { "jk" }, "<C-\\><C-n>")
 
 -- Add Packer commands because we are not loading it at startup
 
@@ -100,12 +95,6 @@ user_cmd("PackerStatus", packer_cmd "status", {})
 user_cmd("PackerSync", packer_cmd "sync", {})
 user_cmd("PackerUpdate", packer_cmd "update", {})
 
--- add NvChadUpdate command and mapping
-cmd "silent! command! NvChadUpdate lua require('nvchad').update_nvchad()"
-map("n", "<leader>uu", "<cmd> :NvChadUpdate <CR>")
-
--- load overriden misc mappings
-nvchad.load_config().mappings.misc()
 
 local M = {}
 

@@ -1,7 +1,4 @@
-local null_ls_status_ok, null_ls = pcall(require, "null-ls")
-if not null_ls_status_ok then
-  return
-end
+local null_ls = require "null-ls"
 
 local b = null_ls.builtins
 
@@ -9,7 +6,7 @@ local sources = {
 
 -- https://github.com/jose-elias-alvarez/null-ls.nvim/tree/main/lua/null-ls/builtins/formatting
 
-   b.formatting.prettier, 
+   b.formatting.prettier.with { filetypes = { "html", "markdown", "css" } },
 
    -- Lua
    b.formatting.stylua,
@@ -21,6 +18,9 @@ local sources = {
 
    --ruby
    b.formatting.rubocop,
+
+   -- python
+   b.formatting.black,
 }
 
 local M = {}
@@ -29,13 +29,6 @@ M.setup = function()
    null_ls.setup {
       debug = true,
       sources = sources,
-
-      -- format on save
-      -- on_attach = function(client)
-      --    if client.resolved_capabilities.document_formatting then
-      --       vim.cmd "autocmd BufWritePre <buffer> lua vim.lsp.buf.formatting_sync()"
-      --    end
-      -- end,
    }
 end
 

@@ -44,7 +44,7 @@ g.nvim_tree_icons = {
 
 local options = {
    filters = {
-      dotfiles = true,
+      dotfiles = false,
       exclude = { "custom" },
    },
    disable_netrw = true,
@@ -78,8 +78,5 @@ local options = {
       },
    },
 }
-
--- check for any override
-options = nvchad.load_override(options, "kyazdani42/nvim-tree.lua")
 
 nvimtree.setup(options)
