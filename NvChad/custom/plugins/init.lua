@@ -117,7 +117,8 @@ return {
       end,
     },
 
-   ["fedepujol/move.nvim"] = {},
+  
+   ["matze/vim-move"]  = {},
 
    ["liuchengxu/vista.vim"] = {},
 
