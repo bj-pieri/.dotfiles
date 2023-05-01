@@ -7,6 +7,7 @@ fi
 
 export ZSH="$HOME/.oh-my-zsh"
 export PATH=$PATH:~/.local/bin
+export PATH=$PATH:~/.cargo/bin
 
 ZSH_THEME="powerlevel10k/powerlevel10k"
 
@@ -30,14 +31,14 @@ alias btr='pacmd ls | grep bluetooth.battery'
 
 #If one experiences no audio output via any means while using ALSA, attempt to unmute the sound card. To do this, launch alsamixer and make sure each column has a green 00 under it (this can be toggled by pressing m): https://wiki.archlinux.org/title/PulseAudio/Troubleshooting
 alias mixer="alsamixer -c 0"
-alias std="ranger ~/Documents/central/Study/CS/"
+alias std="ranger ~/Documents/Central/Study/CS/"
 
 # Add RVM to PATH for scripting. Make sure this is the last PATH variable change.
 # export PATH="$PATH:$HOME/.rvm/bin"
 # source ~/.rvm/scripts/rvm
 # export PATH="$PATH:$HOME/.local/bin"
 
-. $HOME/.asdf/asdf.sh
+# . $HOME/.asdf/asdf.sh
 #export PATH="$PATH:/usr/lib/dart/bin"
 
 # To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
@@ -46,20 +47,5 @@ alias std="ranger ~/Documents/central/Study/CS/"
 [[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
 eval "$(mcfly init zsh)"
 
-source ~/powerlevel10k/powerlevel10k.zsh-theme
 
-# >>> conda initialize >>>
-# !! Contents within this block are managed by 'conda init' !!
-__conda_setup="$('/home/b-pieri/anaconda3/bin/conda' 'shell.zsh' 'hook' 2> /dev/null)"
-if [ $? -eq 0 ]; then
-    eval "$__conda_setup"
-else
-    if [ -f "/home/b-pieri/anaconda3/etc/profile.d/conda.sh" ]; then
-        . "/home/b-pieri/anaconda3/etc/profile.d/conda.sh"
-    else
-        export PATH="/home/b-pieri/anaconda3/bin:$PATH"
-    fi
-fi
-unset __conda_setup
-# <<< conda initialize <<<
 

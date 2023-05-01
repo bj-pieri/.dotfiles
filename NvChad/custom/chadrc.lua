@@ -7,12 +7,13 @@ local highlights = require "custom.highlights"
 M.ui = {
   theme = "gruvbox",
   theme_toggle = { "gruvbox", "gruvbox_light" },
+  transparency = false,
 
   hl_override = highlights.override,
   hl_add = highlights.add,
 
   statusline = {
-    theme = "vscode_colored",
+    theme = "vscode",
     separator_style = "block",
   },
 }
