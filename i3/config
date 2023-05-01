@@ -1,7 +1,6 @@
 # set the mod key to the winkey:
 set $mod Mod4
 
-exec --no-startup-id nm-applet
 #####################
 # workspace layout: #
 #####################
@@ -314,7 +313,8 @@ client.urgent		    	$urgentred	$urgentred	$white		$yellowbrown	$yellowbrown
 ############################################
 
 exec_always --no-startup-id ~/.config/polybar/launch.sh
-exec always nitrogen --restore
+exec_always nitrogen --restore
+exec_always --no-startup-id redshift
 
 #####################################
 # Application menu handled by rofi: #
