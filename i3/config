@@ -1,6 +1,7 @@
 # set the mod key to the winkey:
 set $mod Mod4
 
+exec --no-startup-id nm-applet
 #####################
 # workspace layout: #
 #####################

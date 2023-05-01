@@ -32,6 +32,9 @@ alias btr='pacmd ls | grep bluetooth.battery'
 #If one experiences no audio output via any means while using ALSA, attempt to unmute the sound card. To do this, launch alsamixer and make sure each column has a green 00 under it (this can be toggled by pressing m): https://wiki.archlinux.org/title/PulseAudio/Troubleshooting
 alias mixer="alsamixer -c 0"
 alias std="ranger ~/Documents/Central/Study/CS/"
+alias us="setxkbmap us"
+alias br="setxkbmap br"
+alias acento="setxkbmap -option compose:ralt"
 
 # Add RVM to PATH for scripting. Make sure this is the last PATH variable change.
 # export PATH="$PATH:$HOME/.rvm/bin"
