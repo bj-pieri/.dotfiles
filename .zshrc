@@ -35,6 +35,9 @@ alias std="ranger ~/Documents/Central/Study/CS/"
 alias us="setxkbmap us"
 alias br="setxkbmap br"
 alias acento="setxkbmap -option compose:ralt"
+alias wifi="nmtui"
+alias vboxforce="sudo modprobe vboxdrv"
+alias vboxnet="sudo modprobe vboxnetflt"
 
 # Add RVM to PATH for scripting. Make sure this is the last PATH variable change.
 # export PATH="$PATH:$HOME/.rvm/bin"
@@ -49,6 +52,3 @@ alias acento="setxkbmap -option compose:ralt"
 # To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
 [[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
 eval "$(mcfly init zsh)"
-
-
-
