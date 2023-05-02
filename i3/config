@@ -289,21 +289,14 @@ set $ws10 "10"
 ######################################
 
 # Define colors variables:
-set $darkbluetrans	#08052b
-set $darkblue		#08052b
-set $lightblue		#5294e2
-set $urgentred		#e53935
-set $white		#ffffff
-set $black		#000000
-set $purple		#e345ff
-set $darkgrey		#383c4a
-set $grey		#b0b5bd
-set $mediumgrey		#fb4934
-set $yellowbrown	#e1b700
-
 set $darkbox  #282828
 set $fg0      #fbf1c7
 set $fg       #ebdbb2
+set $urgentred		#e53935
+set $white		#ffffff
+set $black		#000000
+set $darkgrey		#383c4a
+set $grey		#b0b5bd
 
 # define colors for windows:
 #class		        	border		bground		text		indicator	child_border
@@ -318,6 +311,7 @@ client.urgent		    	$urgentred	$urgentred	$white		$yellowbrown	$yellowbrown
 
 # exec_always --no-startup-id ~/.config/polybar/launch.sh
 exec --no-startup-id nitrogen --restore
+bindsym Ctrl+mod1+p exec "flameshot gui"
 
 bar {
     status_command i3status
