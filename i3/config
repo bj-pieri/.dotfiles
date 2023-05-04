@@ -297,6 +297,8 @@ set $white		#ffffff
 set $black		#000000
 set $darkgrey		#383c4a
 set $grey		#b0b5bd
+set $orange #d65d0e
+set $green  #98971a
 
 # define colors for windows:
 #class		        	border		bground		text		indicator	child_border
@@ -310,26 +312,29 @@ client.urgent		    	$urgentred	$urgentred	$white		$yellowbrown	$yellowbrown
 ############################################
 
 # exec_always --no-startup-id ~/.config/polybar/launch.sh
-exec --no-startup-id nitrogen --restore
+# exec --no-startup-id nitrogen --restore
+exec --no-startup-id greenclip daemon>/dev/null
 bindsym Ctrl+mod1+p exec "flameshot gui"
 
-bar {
-    status_command i3status
-    font pango: Hack Regular Nerd Font Complete 12
-
-    colors {
-      background $darkbox
-      statusline $fg0
-      focused_workspace $fg $fg $darkbox
-      inactive_workspace $darkbox $darkbox $fg
-      }
-}
+# bar {
+#     status_command i3status
+#     font pango: Hack Regular Nerd Font Complete 12
+#
+#     colors {
+#       background $darkbox
+#       statusline $fg0
+#       focused_workspace $fg $fg $darkbox
+#       inactive_workspace $darkbox $darkbox $fg
+#       }
+# }
 
 #####################################
 # Application menu handled by rofi: #
 #####################################
 
 ## rofi bindings fancy application menu ($mod+d /F9 optional disabled)
+
+bindsym Ctrl+mod1+l exec rofi -modi "clipboard:greenclip print" -show clipboard -run-command '{cmd}'
 
 bindsym $mod+d exec rofi -modi drun -show drun \
 		-config ~/.config/rofi/rofidmenu.rasi

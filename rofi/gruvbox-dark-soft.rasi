@@ -38,7 +38,7 @@
 
     normal-background:           @background;
     normal-foreground:           @foreground;
-    alternate-normal-background: @gruvbox-dark-bg1;
+    alternate-normal-background: @background;
     alternate-normal-foreground: @foreground;
     selected-normal-background:  @gruvbox-dark-bg3;
     selected-normal-foreground:  @gruvbox-dark-fg0;
