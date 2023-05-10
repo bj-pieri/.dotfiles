@@ -39,6 +39,7 @@ alias wifi="nmtui"
 alias vboxforce="sudo modprobe vboxdrv"
 alias vboxnet="sudo modprobe vboxnetflt"
 alias javinha="zathura ~/Documents/Central/Study/CS/Java/Introduction\ to\ Java\ Programming\ and\ Data\ Structures,\ Comprehensive\ Version\ \(Y.\ Daniel\ Liang\)\ \(z-lib.org\).pdf & disown"
+alias kurose="zathura ~/Documents/Central/Study/CS/Redes/James\ Kurose,\ Keith\ Ross\ -\ Computer\ Networking-Pearson\ \(2021\).pdf &  disown"
 
 # Add RVM to PATH for scripting. Make sure this is the last PATH variable change.
 # export PATH="$PATH:$HOME/.rvm/bin"
