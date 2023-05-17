@@ -289,47 +289,58 @@ set $ws10 "10"
 ######################################
 
 # Define colors variables:
-set $gruvbox_bg  #282828
+set $gruvbox_bg       #282828
 set $gruvbox_fg0      #fbf1c7
-set $gruvbox_blue #458588
-set $urgentred		#e53935
-set $white		#ffffff
-set $black		#000000
-set $darkgrey		#383c4a
-set $grey		#b0b5bd
-set $orange #d65d0e
-set $green  #98971a
+set $gruvbox_blue     #458588
+set $gruvbox_orang    #fe8019
+set $urgentred        #e53935
+set $white            #ffffff
+set $black            #000000
+set $darkgrey         #383c4a
+set $grey             #b0b5bd
+set $orange           #d65d0e
+set $green            #b8bb26
 
 # define colors for windows:
-#class		        	border		bground		text		indicator	child_border
-client.focused		    	$gruvbox_fg0	$gruvbox_bg	$gruvbox_fg0			$gruvbox_fg0
-client.unfocused	    	$gruvbox_bg	$gruvbox_bg	#a89984		$darkgrey	$darkgrey
-client.focused_inactive		$gruvbox_bg	$gruvbox_bg	$grey		$black		$black
-client.urgent		    	$urgentred	$urgentred	$white		$yellowbrown	$yellowbrown
+#class                  <border>            <bground>             <text>            <indicator>       <child_border>       #
+client.focused          $gruvbox_orange     $gruvbox_bg           $gruvbox_fg0      $gruvbox_orange
+client.unfocused        $gruvbox_bg         $gruvbox_bg           $darkgrey         $darkgrey         $darkgrey
+client.focused_inactive $gruvbox_bg         $gruvbox_bg           $grey             $black            $black
+client.urgent           $urgentred          $urgentred            $white            $yellowbrown      $yellowbrown
+
 
 ############################################
 # bar settings (input comes from i3blocks) #
 ############################################
-
-# exec_always --no-startup-id ~/.config/polybar/launch.sh
-exec --no-startup-id setxkbmap -option compose:ralt
-exec --no-startup-id nitrogen --restore
-exec --no-startup-id greenclip daemon>/dev/null
-bindsym Ctrl+mod1+p exec "flameshot gui"
 
 bar {
     # status_command i3status
     font pango: Hack Regular Nerd Font Complete 12
     status_command i3blocks -c ~/.config/i3/i3blocks.conf
     position bottom
+    separator_symbol " "
 
+# gruvbox bar theme
     colors {
       background $gruvbox_bg
       statusline $gruvbox_fg0
-      focused_workspace $gruvbox_blue $gruvbox_blue $gruvbox_fg0
-      inactive_workspace $gruvbox_bg $gruvbox_bg $fg
+
+#     <colorclass>            <border>         <background>        <text>     #
+      focused_workspace       $gruvbox_fg0     $gruvbox_fg0        $gruvbox_bg
+      inactive_workspace      $gruvbox_bg      $gruvbox_bg         $fg
       }
 }
+
+
+############################################
+#      custom settings and commands        #
+############################################
+# exec_always --no-startup-id ~/.config/polybar/launch.sh
+exec --no-startup-id setxkbmap -option compose:ralt
+exec --no-startup-id nitrogen --restore
+exec --no-startup-id greenclip daemon>/dev/null
+bindsym Ctrl+mod1+p exec "flameshot gui"
+
 
 #####################################
 # Application menu handled by rofi: #
@@ -341,7 +352,6 @@ bindsym Ctrl+mod1+l exec rofi -modi "clipboard:greenclip print" -show clipboard 
 
 bindsym $mod+d exec rofi -modi drun -show drun \
 		-config ~/.config/rofi/rofidmenu.rasi
-
 
 bindsym $mod+t exec rofi -show window \
 		-config ~/.config/rofi/rofidmenu.rasi

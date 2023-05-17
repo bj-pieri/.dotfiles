@@ -1,4 +1,6 @@
 yay
+tmux
+tmux-tpm
 i3wm
 neovim
 nvchad
@@ -8,7 +10,9 @@ ranger
 ueberzugpp
 polybar
 rofi
+networkmanager-dmenu-git
 alacritty
+zathura
 zathura-pdf-mupdf
 haruna
 discord
@@ -28,3 +32,6 @@ mcfly
 vagrant
 virtualbox (host arch-modules)
 xkblayout-state
+go
+openjdk
+

@@ -31,6 +31,9 @@ alias btr='pacmd ls | grep bluetooth.battery'
 
 #If one experiences no audio output via any means while using ALSA, attempt to unmute the sound card. To do this, launch alsamixer and make sure each column has a green 00 under it (this can be toggled by pressing m): https://wiki.archlinux.org/title/PulseAudio/Troubleshooting
 alias mixer="alsamixer -c 0"
+alias cfont="fc-cache -fv"
+alias mountbj="sudo mount --mkdir /dev/sdb2 /run/media/bj-pieri/Benjamin"
+alias stdhd="ranger /run/media/bj-pieri/Benjamin"
 alias std="ranger ~/Documents/Central/Study/CS/"
 alias us="setxkbmap us"
 alias br="setxkbmap br"
