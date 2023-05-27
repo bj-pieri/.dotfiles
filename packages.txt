@@ -7,13 +7,14 @@ nvchad
 nmtui
 bluetuith
 ranger
-ueberzugpp
+ueberzugpp (for ranger image preview)
+ffmpegthumbnailer (for ranger thumb video preview)
 polybar
 rofi
-networkmanager-dmenu-git
 alacritty
 zathura
 zathura-pdf-mupdf
+zathura-cb-git
 haruna
 discord
 telegram

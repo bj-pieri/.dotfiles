@@ -293,18 +293,18 @@ set $gruvbox_bg       #282828
 set $gruvbox_fg0      #fbf1c7
 set $gruvbox_blue     #458588
 set $gruvbox_orang    #fe8019
+set $gruvbox_green    #b8bb26
 set $urgentred        #e53935
 set $white            #ffffff
 set $black            #000000
 set $darkgrey         #383c4a
 set $grey             #b0b5bd
 set $orange           #d65d0e
-set $green            #b8bb26
 
 # define colors for windows:
 #class                  <border>            <bground>             <text>            <indicator>       <child_border>       #
 client.focused          $gruvbox_orange     $gruvbox_bg           $gruvbox_fg0      $gruvbox_orange
-client.unfocused        $gruvbox_bg         $gruvbox_bg           $darkgrey         $darkgrey         $darkgrey
+client.unfocused        $gruvbox_bg         $gruvbox_bg           $gruvbox_fg0      $darkgrey         $darkgrey
 client.focused_inactive $gruvbox_bg         $gruvbox_bg           $grey             $black            $black
 client.urgent           $urgentred          $urgentred            $white            $yellowbrown      $yellowbrown
 

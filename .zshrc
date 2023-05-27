@@ -8,6 +8,7 @@ fi
 export ZSH="$HOME/.oh-my-zsh"
 export PATH=$PATH:~/.local/bin
 export PATH=$PATH:~/.cargo/bin
+# export PATH=$PATH:~/scripts
 
 ZSH_THEME="powerlevel10k/powerlevel10k"
 
@@ -33,6 +34,7 @@ alias btr='pacmd ls | grep bluetooth.battery'
 alias mixer="alsamixer -c 0"
 alias cfont="fc-cache -fv"
 alias mountbj="sudo mount --mkdir /dev/sdb2 /run/media/bj-pieri/Benjamin"
+alias umountbj="sudo umount -v /run/media/bj-pieri/Benjamin"
 alias stdhd="ranger /run/media/bj-pieri/Benjamin"
 alias std="ranger ~/Documents/Central/Study/CS/"
 alias us="setxkbmap us"

@@ -33,7 +33,10 @@ M.mason = {
     "css-lsp",
     "html-lsp",
     "typescript-language-server",
+    "angularls",
     "prettier",
+
+    -- general
     "black",
     "bash-language-server",
     "clangd",

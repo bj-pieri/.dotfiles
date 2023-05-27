@@ -6,9 +6,11 @@ local M = {}
 
 ---@type Base46HLGroupsList
 M.override = {
-  Comment = {
-    italic = true,
-  },
+
+  CursorLine = {
+    bg = "#3c3836",
+  }
+
 }
 
 ---@type HLTable

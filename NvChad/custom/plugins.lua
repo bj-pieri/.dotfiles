@@ -71,6 +71,12 @@ local plugins = {
      --   require "custom.plugins.markdown-preview"
      -- end,
   },
+  
+  {
+    "junegunn/fzf",
+    lazy = false,
+    run = function () vim.fn["fzf#install"]() end,
+  }
 }
 
 return plugins
