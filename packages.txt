@@ -35,4 +35,9 @@ virtualbox (host arch-modules)
 xkblayout-state
 go
 openjdk
-
+ctop
+dive
+skdman
+tree
+megasync
+brightnessctl

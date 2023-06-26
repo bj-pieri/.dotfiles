@@ -29,14 +29,11 @@ M.mason = {
     "lua-language-server",
     "stylua",
 
-    -- web dev stuff
     "css-lsp",
     "html-lsp",
     "typescript-language-server",
     "angularls",
     "prettier",
-
-    -- general
     "black",
     "bash-language-server",
     "clangd",
@@ -53,12 +50,12 @@ M.nvimtree = {
   },
 
   view = {
-    hide_root_folder = false,
     adaptive_size = true,
     side = 'left',
    },
 
   renderer = {
+    root_folder_label= false,
     highlight_git = true,
     icons = {
       show = {

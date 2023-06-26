@@ -32,6 +32,7 @@ alias btr='pacmd ls | grep bluetooth.battery'
 
 #If one experiences no audio output via any means while using ALSA, attempt to unmute the sound card. To do this, launch alsamixer and make sure each column has a green 00 under it (this can be toggled by pressing m): https://wiki.archlinux.org/title/PulseAudio/Troubleshooting
 alias mixer="alsamixer -c 0"
+alias fixtearing="xrandr --output eDP --set TearFree on"
 alias cfont="fc-cache -fv"
 alias mountbj="sudo mount --mkdir /dev/sdb2 /run/media/bj-pieri/Benjamin"
 alias umountbj="sudo umount -v /run/media/bj-pieri/Benjamin"
@@ -45,6 +46,7 @@ alias vboxforce="sudo modprobe vboxdrv"
 alias vboxnet="sudo modprobe vboxnetflt"
 alias javinha="zathura ~/Documents/Central/Study/CS/Java/Introduction\ to\ Java\ Programming\ and\ Data\ Structures,\ Comprehensive\ Version\ \(Y.\ Daniel\ Liang\)\ \(z-lib.org\).pdf & disown"
 alias kurose="zathura ~/Documents/Central/Study/CS/Redes/James\ Kurose,\ Keith\ Ross\ -\ Computer\ Networking-Pearson\ \(2021\).pdf &  disown"
+alias unixin=" zathura ~/Documents/Central/Study/CS/Gnu-Linux/2017\ Nemeth\ Evi\ etal\ -\ UNIX\ and\ Linux\ System\ Administration\ Handbook\[5thED\]_Rell.pdf & disown"
 
 # Add RVM to PATH for scripting. Make sure this is the last PATH variable change.
 # export PATH="$PATH:$HOME/.rvm/bin"
@@ -59,3 +61,7 @@ alias kurose="zathura ~/Documents/Central/Study/CS/Redes/James\ Kurose,\ Keith\ 
 # To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
 [[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
 eval "$(mcfly init zsh)"
+
+#THIS MUST BE AT THE END OF THE FILE FOR SDKMAN TO WORK!!!
+export SDKMAN_DIR="$HOME/.sdkman"
+[[ -s "$HOME/.sdkman/bin/sdkman-init.sh" ]] && source "$HOME/.sdkman/bin/sdkman-init.sh"
