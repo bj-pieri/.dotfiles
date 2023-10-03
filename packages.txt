@@ -9,8 +9,10 @@ bluetuith
 ranger
 ueberzugpp (for ranger image preview)
 ffmpegthumbnailer (for ranger thumb video preview)
+emoji-picker-git
 polybar
 rofi
+menu-calc-git
 alacritty
 zathura
 zathura-pdf-mupdf
@@ -41,3 +43,4 @@ skdman
 tree
 megasync
 brightnessctl
+dunst

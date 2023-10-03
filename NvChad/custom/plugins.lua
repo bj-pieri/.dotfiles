@@ -5,6 +5,8 @@ local plugins = {
 
   -- Override plugin definition options
 
+{ "hrsh7th/nvim-cmp", opts = overrides.cmp },
+
   {
     "neovim/nvim-lspconfig",
     dependencies = {
@@ -71,12 +73,30 @@ local plugins = {
      --   require "custom.plugins.markdown-preview"
      -- end,
   },
-  
+
   {
     "junegunn/fzf",
     lazy = false,
     run = function () vim.fn["fzf#install"]() end,
+  },
+
+  {
+    "mg979/vim-visual-multi",
+    lazy = false,
+  },
+
+  {
+    "jakerobers/vim-hexrgba",
+    lazy = false,
+  },
+
+  {
+    "barrett-ruth/live-server.nvim",
+    lazy = false,
+    build = 'yarn global add live-server',
+    config = true
   }
 }
+
 
 return plugins

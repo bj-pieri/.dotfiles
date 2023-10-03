@@ -342,6 +342,7 @@ exec --no-startup-id greenclip daemon>/dev/null
 bindsym Ctrl+mod1+p exec "flameshot gui"
 bindsym mod1+Shift+equal exec brightnessctl set +10%
 bindsym mod1+Shift+minus exec brightnessctl set 10%-
+bindsym mod1+k exec emoji-picker
 
 
 #####################################

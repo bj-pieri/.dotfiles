@@ -28,7 +28,8 @@ export EDITOR=nvim
 alias cp="cp -i"
 alias mv='mv -i'
 alias rm='rm -i'
-alias btr='pacmd ls | grep bluetooth.battery' 
+alias btr="bluetoothctl info | awk '/Battery Percentage/ {gsub(/[^0-9]+/, \"\", \$NF); print \$1, \$2 \" \" \$NF \"%\"}'"
+
 
 #If one experiences no audio output via any means while using ALSA, attempt to unmute the sound card. To do this, launch alsamixer and make sure each column has a green 00 under it (this can be toggled by pressing m): https://wiki.archlinux.org/title/PulseAudio/Troubleshooting
 alias mixer="alsamixer -c 0"
@@ -38,6 +39,7 @@ alias mountbj="sudo mount --mkdir /dev/sdb2 /run/media/bj-pieri/Benjamin"
 alias umountbj="sudo umount -v /run/media/bj-pieri/Benjamin"
 alias stdhd="ranger /run/media/bj-pieri/Benjamin"
 alias std="ranger ~/Documents/Central/Study/CS/"
+alias cleanswap="rm -rf .local/state/nvim/swap"
 alias us="setxkbmap us"
 alias br="setxkbmap br"
 alias acento="setxkbmap -option compose:ralt"
@@ -53,7 +55,7 @@ alias unixin=" zathura ~/Documents/Central/Study/CS/Gnu-Linux/2017\ Nemeth\ Evi\
 # source ~/.rvm/scripts/rvm
 # export PATH="$PATH:$HOME/.local/bin"
 
-# . $HOME/.asdf/asdf.sh
+. $HOME/.asdf/asdf.sh
 #export PATH="$PATH:/usr/lib/dart/bin"
 
 # To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
@@ -65,3 +67,26 @@ eval "$(mcfly init zsh)"
 #THIS MUST BE AT THE END OF THE FILE FOR SDKMAN TO WORK!!!
 export SDKMAN_DIR="$HOME/.sdkman"
 [[ -s "$HOME/.sdkman/bin/sdkman-init.sh" ]] && source "$HOME/.sdkman/bin/sdkman-init.sh"
+
+# >>> conda initialize >>>
+# !! Contents within this block are managed by 'conda init' !!
+__conda_setup="$('/home/bj-pieri/anaconda3/bin/conda' 'shell.zsh' 'hook' 2> /dev/null)"
+if [ $? -eq 0 ]; then
+    eval "$__conda_setup"
+else
+    if [ -f "/home/bj-pieri/anaconda3/etc/profile.d/conda.sh" ]; then
+        . "/home/bj-pieri/anaconda3/etc/profile.d/conda.sh"
+    else
+        export PATH="/home/bj-pieri/anaconda3/bin:$PATH"
+    fi
+fi
+unset __conda_setup
+# <<< conda initialize <<<
+
+
+# bun completions
+[ -s "/home/bj-pieri/.bun/_bun" ] && source "/home/bj-pieri/.bun/_bun"
+
+# bun
+export BUN_INSTALL="$HOME/.bun"
+export PATH="$BUN_INSTALL/bin:$PATH"

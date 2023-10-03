@@ -34,12 +34,9 @@ M.mason = {
     "typescript-language-server",
     "angularls",
     "prettier",
-    "black",
     "bash-language-server",
     "clangd",
-    "gopls",
     "jdtls",
-    "pyright",
   },
 }
 
@@ -55,7 +52,7 @@ M.nvimtree = {
    },
 
   renderer = {
-    root_folder_label= false,
+    root_folder_label= true,
     highlight_git = true,
     icons = {
       show = {
