@@ -39,7 +39,7 @@ alias mountbj="sudo mount --mkdir /dev/sdb2 /run/media/bj-pieri/Benjamin"
 alias umountbj="sudo umount -v /run/media/bj-pieri/Benjamin"
 alias stdhd="ranger /run/media/bj-pieri/Benjamin"
 alias std="ranger ~/Documents/Central/Study/CS/"
-alias cleanswap="rm -rf .local/state/nvim/swap"
+alias cleanswap="rm -rf ~/.local/state/nvim/swap"
 alias us="setxkbmap us"
 alias br="setxkbmap br"
 alias acento="setxkbmap -option compose:ralt"
@@ -67,22 +67,6 @@ eval "$(mcfly init zsh)"
 #THIS MUST BE AT THE END OF THE FILE FOR SDKMAN TO WORK!!!
 export SDKMAN_DIR="$HOME/.sdkman"
 [[ -s "$HOME/.sdkman/bin/sdkman-init.sh" ]] && source "$HOME/.sdkman/bin/sdkman-init.sh"
-
-# >>> conda initialize >>>
-# !! Contents within this block are managed by 'conda init' !!
-__conda_setup="$('/home/bj-pieri/anaconda3/bin/conda' 'shell.zsh' 'hook' 2> /dev/null)"
-if [ $? -eq 0 ]; then
-    eval "$__conda_setup"
-else
-    if [ -f "/home/bj-pieri/anaconda3/etc/profile.d/conda.sh" ]; then
-        . "/home/bj-pieri/anaconda3/etc/profile.d/conda.sh"
-    else
-        export PATH="/home/bj-pieri/anaconda3/bin:$PATH"
-    fi
-fi
-unset __conda_setup
-# <<< conda initialize <<<
-
 
 # bun completions
 [ -s "/home/bj-pieri/.bun/_bun" ] && source "/home/bj-pieri/.bun/_bun"

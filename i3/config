@@ -290,6 +290,7 @@ set $ws10 "10"
 
 # Define colors variables:
 set $gruvbox_bg       #282828
+set $gruvbox_bgg      #282828bb
 set $gruvbox_fg0      #fbf1c7
 set $gruvbox_blue     #458588
 set $gruvbox_orang    #fe8019
@@ -319,6 +320,7 @@ bar {
     status_command i3blocks -c ~/.config/i3/i3blocks.conf
     position bottom
     separator_symbol " "
+    # i3bar_command i3bar --transparency
 
 # gruvbox bar theme
     colors {
@@ -335,14 +337,15 @@ bar {
 ############################################
 #      custom settings and commands        #
 ############################################
-# exec_always --no-startup-id ~/.config/polybar/launch.sh
+# exec_always --no-startup-id ~/.config/oplybar/launch.sh
 exec --no-startup-id setxkbmap -option compose:ralt
 exec --no-startup-id nitrogen --restore
 exec --no-startup-id greenclip daemon>/dev/null
+# exec_always --no-startup-id picom --config ~/.config/picom/picom.conf
 bindsym Ctrl+mod1+p exec "flameshot gui"
 bindsym mod1+Shift+equal exec brightnessctl set +10%
 bindsym mod1+Shift+minus exec brightnessctl set 10%-
-bindsym mod1+k exec emoji-picker
+bindsym Ctrl+k exec emoji-picker
 
 
 #####################################

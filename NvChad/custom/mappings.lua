@@ -2,22 +2,43 @@
 
 local M = {}
 
+
+M.disabled = {
+  n = {
+      ["<C-n>"] = "",
+  }
+}
+
+
 M.general = {
   n = {
-    ["<leader>gg"] = {"<cmd> Vista!! <CR>", "ﮒ   toggle sidebar vista with ctags"},
-    ["<leader>gf"] = {"<cmd> Vista finder <CR>", "ﮒ   toggle vista ctags searcher"},
-    ["<leader>gr"] = {"<cmd> Vista finder! <CR>", "ﮒ   toggle recursively ctags searcher"},
+    ["<leader>gg"] = {"<cmd> Vista!! <CR>", "toggle sidebar vista with ctags"},
+    ["<leader>gf"] = {"<cmd> Vista finder <CR>", "toggle vista ctags searcher"},
+    ["<leader>gr"] = {"<cmd> Vista finder! <CR>", "toggle recursively ctags searcher"},
 
     -- Toggle LSP server
-    ["<leader>L"] = {"<cmd> LspStop <CR>", "ﮒ   toggle LSP server off"},
-    ["<leader>l"] = {"<cmd> LspStart <CR>", "ﮒ   toggle LSP server on"},
+    ["<leader>L"] = {"<cmd> LspStop <CR>", "toggle LSP server off"},
+    ["<leader>l"] = {"<cmd> LspStart <CR>", " toggle LSP server on"},
 
     --Gitsigns toggle blame line
-    ["<leader>o"] = {"<cmd> Gitsigns toggle_current_line_blame<CR>", "ﮒ   toggle Git line Blame"},
+    ["<leader>o"] = {"<cmd> Gitsigns toggle_current_line_blame<CR>", "toggle Git line Blame"},
 
     -- MarkdownPreview mappings
     ["<leader>md"] = {"<cmd> :MarkdownPreviewToggle<CR>"},
+    ["<A-n>"] = {"<cmd> NvimTreeToggle <CR>", "Toggle nvimtree"},
   }
+}
+
+M.lsp = {
+  n = {
+    ["<leader>fm"] = {
+
+      function()
+        require("conform").format()
+      end,
+      "format with conform",
+    },
+  },
 }
 
 -- Stay in indent mode
