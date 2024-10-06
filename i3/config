@@ -341,6 +341,7 @@ bar {
 exec --no-startup-id setxkbmap -option compose:ralt
 exec --no-startup-id nitrogen --restore
 exec --no-startup-id greenclip daemon>/dev/null
+exec --no-startup-id fixtearing
 # exec_always --no-startup-id picom --config ~/.config/picom/picom.conf
 bindsym Ctrl+mod1+p exec "flameshot gui"
 bindsym mod1+Shift+equal exec brightnessctl set +10%

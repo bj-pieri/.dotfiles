@@ -23,26 +23,6 @@ M.treesitter = {
 	},
 }
 
-M.mason = {
-	ensure_installed = {
-		-- lua stuff
-		"lua-language-server",
-		"stylua",
-
-		"css-lsp",
-		"html-lsp",
-		"typescript-language-server",
-		"angularls",
-		"prettier",
-		"bash-language-server",
-		"clangd",
-		"jdtls",
-    "inteliphense",
-    "phpcs",
-    "php-cs-fixer",
-	},
-}
-
 -- git support in nvimtree
 M.nvimtree = {
 	git = {
@@ -65,20 +45,15 @@ M.nvimtree = {
 	},
 }
 
-M.blankline = {
-	space_char_blankline = " ",
-	show_current_context = true,
-	show_current_context_start = true,
-}
 
 M.gitsigns = {
-	signs = {
-		add = { hl = "DiffAdd", text = "│", numhl = "GitSignsAddNr" },
-		change = { hl = "DiffChange", text = "││", numhl = "GitSignsChangeNr" },
-		delete = { hl = "DiffDelete", text = "", numhl = "GitSignsDeleteNr" },
-		topdelete = { hl = "DiffDelete", text = "‾", numhl = "GitSignsDeleteNr" },
-		changedelete = { hl = "DiffChangeDelete", text = "~", numhl = "GitSignsChangeNr" },
-	},
+	-- signs = {
+	-- 	add = { hl = "DiffAdd", text = "│", numhl = "GitSignsAddNr" },
+	-- 	change = { hl = "DiffChange", text = "││", numhl = "GitSignsChangeNr" },
+	-- 	delete = { hl = "DiffDelete", text = "", numhl = "GitSignsDeleteNr" },
+	-- 	topdelete = { hl = "DiffDelete", text = "‾", numhl = "GitSignsDeleteNr" },
+	-- 	changedelete = { hl = "DiffChangeDelete", text = "~", numhl = "GitSignsChangeNr" },
+	-- },
 
 	signcolumn = true, -- Toggle with `:Gitsigns toggle_signs`
 	numhl = false, -- Toggle with `:Gitsigns toggle_numhl`
@@ -109,9 +84,9 @@ M.gitsigns = {
 		row = 0,
 		col = 1,
 	},
-	yadm = {
-		enable = false,
-	},
+	-- yadm = {
+	-- 	enable = false,
+	-- },
 }
 
 return M
