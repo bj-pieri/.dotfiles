@@ -10,7 +10,7 @@ local options = {
 		sh = { "shfmt" },
 		python = { "black" },
     c = {"clang-format"},
-    php = { "php_cs_fixer" },
+    -- php = { "php_cs_fixer" },
   },
 }
 

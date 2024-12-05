@@ -14,9 +14,9 @@ local servers = {
 	"racket_langserver",
 	"bashls",
 	"dockerls",
-  "intelephense",
   -- "jdtls",
   -- "angularls",
+  -- "intelephense",
   -- "volar",
 	-- "tailwindcss",
 }

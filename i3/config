@@ -347,7 +347,7 @@ bindsym Ctrl+mod1+p exec "flameshot gui"
 bindsym mod1+Shift+equal exec brightnessctl set +10%
 bindsym mod1+Shift+minus exec brightnessctl set 10%-
 bindsym Ctrl+k exec emoji-picker
-
+exec_always --no-startup-id xmodmap -e "keycode 47 = slash NoSymbol slash"
 
 #####################################
 # Application menu handled by rofi: #
