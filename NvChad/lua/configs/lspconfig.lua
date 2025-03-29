@@ -14,11 +14,11 @@ local servers = {
 	"racket_langserver",
 	"bashls",
 	"dockerls",
-  -- "jdtls",
-  -- "angularls",
-  -- "intelephense",
+  "jdtls",
+  "angularls",
   -- "volar",
-	-- "tailwindcss",
+  -- "intelephense",
+  -- "tailwindcss",
 }
 
 local nvlsp = require "nvchad.configs.lspconfig"
