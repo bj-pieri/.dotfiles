@@ -49,13 +49,14 @@ alias vboxnet="sudo modprobe vboxnetflt"
 alias javinha="zathura ~/Documents/Central/Study/CS/Java/Introduction\ to\ Java\ Programming\ and\ Data\ Structures,\ Comprehensive\ Version\ \(Y.\ Daniel\ Liang\)\ \(z-lib.org\).pdf & disown"
 alias kurose="zathura ~/Documents/Central/Study/CS/Redes/James\ Kurose,\ Keith\ Ross\ -\ Computer\ Networking-Pearson\ \(2021\).pdf &  disown"
 alias unixin=" zathura ~/Documents/Central/Study/CS/Gnu-Linux/2017\ Nemeth\ Evi\ etal\ -\ UNIX\ and\ Linux\ System\ Administration\ Handbook\[5thED\]_Rell.pdf & disown"
+alias sala="xrandr --output eDP --primary --mode 1920x1080 --pos 0x0 --rotate normal --output HDMI-A-0 --mode 1920x1080 --pos 1920x0 --rotate normal"
 
 # Add RVM to PATH for scripting. Make sure this is the last PATH variable change.
 # export PATH="$PATH:$HOME/.rvm/bin"
 # source ~/.rvm/scripts/rvm
 # export PATH="$PATH:$HOME/.local/bin"
 
-. $HOME/.asdf/asdf.sh
+#. $HOME/.asdf/asdf.sh
 #export PATH="$PATH:/usr/lib/dart/bin"
 
 # To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
